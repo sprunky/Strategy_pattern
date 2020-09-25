@@ -38,16 +38,19 @@ public class Main {
                 System.out.println("a-Attack b-Block h-Heal");
                 int[] playerAndenemyHitpoints;
                 consoleInput = input.next();
-                if (consoleInput.toUpperCase().equals("A")){
-                    playerAndenemyHitpoints = attack.action(playerHitpoints,enemyHitpoints);
-                    setHitPoints(playerAndenemyHitpoints);
-
-                } else if (consoleInput.toUpperCase().equals( "B")){
-                    playerAndenemyHitpoints = block.action(playerHitpoints,enemyHitpoints);
-                    setHitPoints(playerAndenemyHitpoints);
-                } else if (consoleInput.toUpperCase().equals( "H")){
-                    playerAndenemyHitpoints = heal.action(playerHitpoints,enemyHitpoints);
-                    setHitPoints(playerAndenemyHitpoints);
+                switch (consoleInput.toUpperCase()) {
+                    case "A" -> {
+                        playerAndenemyHitpoints = attack.action(playerHitpoints, enemyHitpoints);
+                        updateHitPoints(playerAndenemyHitpoints);
+                    }
+                    case "B" -> {
+                        playerAndenemyHitpoints = block.action(playerHitpoints, enemyHitpoints);
+                        updateHitPoints(playerAndenemyHitpoints);
+                    }
+                    case "H" -> {
+                        playerAndenemyHitpoints = heal.action(playerHitpoints, enemyHitpoints);
+                        updateHitPoints(playerAndenemyHitpoints);
+                    }
                 }
 
             }
@@ -56,7 +59,7 @@ public class Main {
 
     }
 
-    public static void setHitPoints(int[] playerAndEnemyHitpoints){
+    public static void updateHitPoints(int[] playerAndEnemyHitpoints){
         playerHitpoints = playerAndEnemyHitpoints[0];
         enemyHitpoints = playerAndEnemyHitpoints[1];
     }
