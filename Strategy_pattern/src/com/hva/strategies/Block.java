@@ -27,9 +27,6 @@ public class Block implements Strategy{
             playerHitpoints = 0;
         }
 
-
-
-
         return new int[]{playerHitpoints,enemyHitpoints};
     }
 

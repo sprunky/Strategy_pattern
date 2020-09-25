@@ -41,7 +41,7 @@ public class Game {
 
     private boolean playerDeath(int playerHitpoints) {
         if (playerHitpoints < 1) {
-            System.out.println("You Lose!");
+           CommandText.youLose();
             gameOn = false;
             return true;
         }
@@ -49,7 +49,7 @@ public class Game {
     }
     private boolean enemyDeath(int enemyHitpoints) {
         if (enemyHitpoints < 1) {
-            System.out.println("You Win!");
+            CommandText.youWin();
             gameOn = false;
             return true;
         }
