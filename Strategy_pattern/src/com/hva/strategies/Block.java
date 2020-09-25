@@ -1,6 +1,7 @@
 package com.hva.strategies;
 
 
+import com.hva.CommandText;
 
 public class Block implements Strategy{
 
@@ -11,14 +12,11 @@ public class Block implements Strategy{
         System.out.printf("You can block %d damage this turn\n",block);
         if (block >= incomingDamage){
             System.out.println("You successfully block all damage");
-            int damage = block - incomingDamage;
+            int damage = (block - incomingDamage)/2;
             enemyHitpoints = enemyHitpoints-damage;
             incomingDamage = 0;
             playerHitpoints = playerHitpoints -incomingDamage;
-            System.out.println(String.format("You receive %d damage, your health is %d", incomingDamage, playerHitpoints));
-            System.out.println("You shield bash your opponent with your remaining strength");
-            System.out.printf("You deal %d damage with the shieldbash, your enemy has %d health remaining.\n",damage,enemyHitpoints);
-
+            CommandText.shieldBash(playerHitpoints, enemyHitpoints, incomingDamage, damage);
         } else if (block >0){
            incomingDamage = incomingDamage-block;
             System.out.println("you partially block incoming damage");
@@ -34,5 +32,7 @@ public class Block implements Strategy{
 
         return new int[]{playerHitpoints,enemyHitpoints};
     }
+
+
 
 }
